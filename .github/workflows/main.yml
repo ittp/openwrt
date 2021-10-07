@@ -36,13 +36,13 @@ jobs:
           # ssh remote user
           user: root
           # content of ssh private key. ex raw content of ~/.ssh/id_rsa
-          key: key.key # optional
+    #      key: # opti onal
           # ssh remote password
           pass: ${github.secrets.pwd} # optional
           # connection timeout to remote host
           connect_timeout: 30 # optional, default is 30s
           # execute commands on ssh
-          script: echo 1 # optional
+          script: uci show network > /tmp/net # optional
       # Runs a single command using the runners shell
 #       - name: Run a one-line script
 #         run: echo Hello, world!
