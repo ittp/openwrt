@@ -1,5 +1,3 @@
-wget firewall.data /tmp/fw
-chmod +x /tmp/fw
+#!/bin/env sh
 
-
-LIST=('1' '2')
+uci show firewall

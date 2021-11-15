@@ -32,7 +32,7 @@ jobs:
           # ssh remote host
           host: avt.ittps.ru
           # ssh remote port
-          port: 22# optional, default is 22
+          port: 22    # optional, default is 22
           # ssh remote user
           user: root
           # content of ssh private key. ex raw content of ~/.ssh/id_rsa

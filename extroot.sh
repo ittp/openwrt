@@ -1,16 +1,17 @@
 #!/bin/ash
 echo "extroot"
 # opkg update && opkg install block-mount kmod-usb-kmod-fs-ext4 kmod-usb-storage
+
+url="https://api.ittps.ru/"
+
 etc=/etc
 tmp=/tmp
 
 dev="/dev/sda1"
-
-pkgs="curl nano block-mount kmod-usb-kmod-fs-ext4 kmod-usb-storage"
+pkgs="curl block-mount kmod-usb-kmod-fs-ext4 kmod-usb-storage kmod-fs-ext4 e2fsprogs kmod-usb-ohci kmod-usb-uhci fdisk"
 
 install() {
-    opkg update
-    opkg install $pkgs
+    opkg update && opkg install $pkgs
 }
 
 fstab_init {
