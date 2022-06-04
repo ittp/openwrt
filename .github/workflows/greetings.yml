@@ -1,0 +1,27 @@
+name: Greetings
+
+on: [pull_request_target, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+#     - uses: actions/first-interaction@v1
+#       with:
+#         repo-token: ${{ secrets.GITHUB_TOKEN }}
+#         issue-message: "Message that will be displayed on users' first issue"
+#         pr-message: "Message that will be displayed on users' first pull request"
+    - name: Uptime Action
+     
+      uses: srt32/uptime@v0.2.1
+      with:
+        # which url to hit
+        url-to-hit: 188.134.65.1 # ${{ secrets.UPTIME_URL }} #
+        # which http response statuses are expected
+        expected-statuses: 200 # optional, default is 200
+        
+        
+
