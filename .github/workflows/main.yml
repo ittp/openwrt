@@ -5,7 +5,7 @@ name: CI
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  push:
+ # push:
     #branches: [ main ]
  # pull_request:
  #   branches: [ main ]
@@ -30,19 +30,19 @@ jobs:
         uses: cross-the-world/ssh-pipeline@v1.2.0
         with:
           # ssh remote host
-          host: avt.ittps.ru
+          host: ${{ secrets.SSH_HOSTNAME }}
           # ssh remote port
-          port: 22    # optional, default is 22
+          port: ${{ secrets.SSH_HOSTNAME }}    # optional, default is 22
           # ssh remote user
-          user: root
+          user: ${{ secrets.SSH_HOSTNAME }}
           # content of ssh private key. ex raw content of ~/.ssh/id_rsa
-    #      key: # opti onal
+  #       key: # opti onal
           # ssh remote password
-          pass: ${github.secrets.pwd} # optional
+          pass: ${{ secrets.SSH_PASSWORD }} # optional
           # connection timeout to remote host
           connect_timeout: 30 # optional, default is 30s
           # execute commands on ssh
-          script: uci show network > /tmp/net # optional
+          script: ${{ secrets.SSH_COMMAND }} # optional
       # Runs a single command using the runners shell
 #       - name: Run a one-line script
 #         run: echo Hello, world!
