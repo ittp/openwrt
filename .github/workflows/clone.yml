@@ -1,4 +1,4 @@
-name: Clone repository
+name: Clone repository (SSH Deploy)
 
 on: [workflow_dispatch]
 
@@ -10,7 +10,30 @@ jobs:
     - name: Setup SSH
       uses: MrSquaare/ssh-setup-action@v1
       with:
-        host: github.com
+        host: ${{ secrets.SSH_HOST }}
+        port: ${{ secrets.SSH_PORT }}
+        user: ${{ secrets.SSH_USER }}
         private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - name: Clone repository
       run: git clone git@github.com:username/repository.git
+    - name: ssh deploy
+      # You may pin to the exact commit or the version.
+      # uses: easingthemes/ssh-deploy@c711f2c3391cac2876bf4c833590077f02e4bcb8
+      uses: easingthemes/ssh-deploy@v2.2.11
+      with:
+        # Private Key
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        # Remote host
+        REMOTE_HOST: ${{ secrets.SSH_PRIVATE_KEY }}
+        # Remote user
+        REMOTE_USER: ${{ secrets.SSH_PRIVATE_KEY }}
+        # Remote port
+        REMOTE_PORT: ${{ secrets.SSH_PRIVATE_KEY }} # optional, default is 22
+        # Source directory
+        SOURCE: ${{ secrets.SSH_PRIVATE_KEY }} # optional, default is 
+        # Target directory
+        TARGET: ${{ secrets.SSH_PRIVATE_KEY }} # optional, default is /home/REMOTE_USER/
+        # Arguments to pass to rsync
+        ARGS: ${{ secrets.SSH_PRIVATE_KEY }} # optional, default is -rltgoDzvO
+        # An array of folder to exclude
+        EXCLUDE: ${{ secrets.SSH_PRIVATE_KEY }} # optional, default is 
